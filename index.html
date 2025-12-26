@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satyam Tiwari | Contemplative Neuroscience & Yoga Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --saffron: #FF6B35;
+            --deep-blue: #1a365d;
+            --gold: #D4A84B;
+            --cream: #FDF8F3;
+            --sage: #87A878;
+            --charcoal: #2D3748;
+            --light-gold: #F5E6C8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(253, 248, 243, 0.95); backdrop-filter: blur(10px);
+            z-index: 1000; border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+        }
+        .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--deep-blue); text-decoration: none; }
+        .logo span { color: var(--saffron); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--charcoal); font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--saffron); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; padding: 8rem 5% 4rem; gap: 4rem;
+        }
+        .hero-content { max-width: 600px; }
+        .hero-badge {
+            display: inline-block; padding: 0.5rem 1rem; background: var(--light-gold);
+            border-radius: 100px; font-size: 0.85rem; font-weight: 600; color: var(--deep-blue); margin-bottom: 1.5rem;
+        }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--deep-blue); line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero h1 .highlight { color: var(--saffron); }
+        .hero-subtitle { font-size: 1.1rem; margin-bottom: 2rem; }
+        .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--saffron); }
+        .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero-image { display: flex; justify-content: center; }
+        .profile-img { width: 350px; height: 350px; border-radius: 20px; object-fit: cover; box-shadow: 0 25px 80px rgba(26, 54, 93, 0.2); border: 5px solid white; }
+
+        /* Sections */
+        section { padding: 5rem 5%; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; color: var(--saffron); font-weight: 600; margin-bottom: 0.5rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--deep-blue); font-weight: 700; }
+
+        /* Featured Achievement */
+        .featured-achievement { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; }
+        .featured-achievement .section-label { color: var(--gold); }
+        .featured-achievement .section-title { color: white; }
+        .achievement-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .achievement-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+        .achievement-text .prize { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .achievement-text p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1rem; }
+        .achievement-highlights { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+        .highlight-badge { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(212, 168, 75, 0.3); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.85rem; }
+        .achievement-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .achievement-images img { width: 100%; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .achievement-images img:first-child { grid-column: span 2; }
+
+        /* Experience */
+        .experience { background: white; }
+        .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .exp-card { background: var(--cream); border-radius: 20px; padding: 2rem; border: 1px solid var(--light-gold); transition: transform 0.3s; }
+        .exp-card:hover { transform: translateY(-5px); }
+        .exp-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .exp-logo { width: 60px; height: 60px; border-radius: 12px; object-fit: contain; background: white; padding: 8px; }
+        .exp-title h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--deep-blue); }
+        .exp-title span { font-size: 0.85rem; color: var(--saffron); font-weight: 500; }
+        .exp-card p { font-size: 0.95rem; margin-bottom: 1rem; }
+        .exp-link { color: var(--saffron); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+        /* Credentials */
+        .credentials { background: linear-gradient(135deg, var(--deep-blue) 0%, #2d4a6f 100%); color: white; }
+        .credentials .section-label { color: var(--gold); }
+        .credentials .section-title { color: white; }
+        .credentials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .credential-card { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.5rem; transition: transform 0.3s; }
+        .credential-card:hover { transform: translateY(-5px); }
+        .credential-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .credential-card .institution { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .credential-card p { font-size: 0.9rem; opacity: 0.85; }
+        .gold-medal { display: inline-block; background: var(--gold); color: var(--deep-blue); padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; margin-top: 0.75rem; }
+
+        /* Gallery */
+        .gallery { background: var(--light-gold); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto; }
+        .gallery-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 1; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item .overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 1rem; color: white; font-size: 0.8rem; transform: translateY(100%); transition: transform 0.3s; }
+        .gallery-item:hover .overlay { transform: translateY(0); }
+        .gallery-item.large { grid-column: span 2; grid-row: span 2; }
+
+        /* Media */
+        .media { background: var(--cream); }
+        .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .media-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 5px 20px rgba(26, 54, 93, 0.08); transition: transform 0.3s; }
+        .media-card:hover { transform: translateY(-5px); }
+        .media-thumbnail { height: 160px; background: linear-gradient(135deg, var(--deep-blue), #4a6fa5); display: flex; align-items: center; justify-content: center; position: relative; }
+        .play-icon { width: 50px; height: 50px; background: var(--saffron); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; }
+        .media-badge { position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(255, 255, 255, 0.9); padding: 0.2rem 0.6rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; }
+        .media-info { padding: 1.25rem; }
+        .media-info h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--deep-blue); margin-bottom: 0.5rem; }
+        .media-info p { font-size: 0.85rem; opacity: 0.8; }
+        .media-link { display: inline-block; margin-top: 0.75rem; color: var(--saffron); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+        /* Technology */
+        .technology { background: var(--deep-blue); color: white; }
+        .technology .section-label { color: var(--gold); }
+        .technology .section-title { color: white; }
+        .tech-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; align-items: center; }
+        .tech-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; }
+        .tech-content p { opacity: 0.9; margin-bottom: 1.5rem; }
+        .tech-features { list-style: none; }
+        .tech-features li { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .tech-features li::before { content: '✓'; width: 24px; height: 24px; background: var(--saffron); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+        .tech-visual { text-align: center; }
+        .tech-logo { max-width: 300px; margin-bottom: 2rem; }
+        .demo-btn { display: inline-block; padding: 1rem 2rem; background: var(--gold); color: var(--deep-blue); text-decoration: none; border-radius: 100px; font-weight: 700; transition: transform 0.3s; }
+        .demo-btn:hover { transform: translateY(-3px); }
+
+        /* Contact */
+        .contact { background: linear-gradient(135deg, var(--deep-blue) 0%, #2d4a6f 100%); color: white; text-align: center; }
+        .contact .section-label { color: var(--gold); }
+        .contact .section-title { color: white; }
+        .contact-info { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin: 2rem 0; }
+        .contact-item { display: flex; align-items: center; gap: 0.75rem; }
+        .contact-icon { width: 50px; height: 50px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .contact-text { text-align: left; }
+        .contact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+        .contact-value a { color: white; text-decoration: none; }
+        .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
+        .social-link { width: 50px; height: 50px; background: var(--saffron); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.25rem; transition: transform 0.3s; }
+        .social-link:hover { transform: translateY(-5px); background: var(--gold); }
+
+        footer { background: #0f1f32; color: white; text-align: center; padding: 2rem; font-size: 0.85rem; opacity: 0.8; }
+
+        @media (max-width: 968px) {
+            .hero, .achievement-content, .tech-showcase { grid-template-columns: 1fr; }
+            .hero { text-align: center; }
+            .hero-image { order: -1; }
+            .profile-img { width: 250px; height: 250px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item.large { grid-column: span 1; grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Satyam <span>Tiwari</span></a>
+        <ul class="nav-links">
+            <li><a href="#achievement">Awards</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#credentials">Education</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🏆 PragnyaTech Award Winner 2025 | PhD Scholar, IIT Mandi</div>
+            <h1>Bridging <span class="highlight">Ancient Wisdom</span> & Modern Science</h1>
+            <p class="hero-subtitle">Contemplative Neuroscientist and Yoga Researcher exploring the scientific foundations of Svara Yoga, Mindfulness, and Indian Knowledge Systems. Founder of YogaXBiofeedback Pvt. Ltd.</p>
+            <div class="hero-stats">
+                <div class="stat"><div class="stat-number">12+</div><div class="stat-label">Years Practice</div></div>
+                <div class="stat"><div class="stat-number">15+</div><div class="stat-label">Publications</div></div>
+                <div class="stat"><div class="stat-number">7</div><div class="stat-label">Books</div></div>
+                <div class="stat"><div class="stat-number">30+</div><div class="stat-label">TV Episodes</div></div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/images/profile.jpg" alt="Satyam Tiwari" class="profile-img">
+        </div>
+    </section>
+
+    <section class="featured-achievement" id="achievement">
+        <div class="section-header">
+            <div class="section-label">🏆 Major Achievement</div>
+            <h2 class="section-title">PragnyaTech Deep-Tech Challenge Winner</h2>
+        </div>
+        <div class="achievement-content">
+            <div class="achievement-text">
+                <h3>Adani Global Indology Conclave 2025</h3>
+                <div class="prize">₹1,00,000 Prize</div>
+                <p>Won the prestigious PragnyaTech Deep-Tech Challenge for the <strong>Svara Yoga Detection Device</strong> - bridging traditional yogic knowledge with cutting-edge technology.</p>
+                <p>Award presented by <strong>Dr. Priti Adani</strong>, Chairperson of the Adani Foundation, in presence of Mr. Gautam Adani, Shankaracharya Swami Avimukteshwaranand Saraswati, and IIT Directors.</p>
+                <div class="achievement-highlights">
+                    <span class="highlight-badge">🎯 1st Prize Winner</span>
+                    <span class="highlight-badge">🏛️ IIT Mandi Representative</span>
+                    <span class="highlight-badge">📰 National Media Coverage</span>
+                </div>
+            </div>
+            <div class="achievement-images">
+                <img src="assets/images/adani_award_priti.jpg" alt="With Dr. Priti Adani">
+                <img src="assets/images/adani_award_stage.jpg" alt="On stage">
+                <img src="assets/images/adani_award_trophy.jpg" alt="With trophy">
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="section-header">
+            <div class="section-label">Professional Journey</div>
+            <h2 class="section-title">Experience & Roles</h2>
+        </div>
+        <div class="experience-grid">
+            <div class="exp-card">
+                <div class="exp-header">
+                    <img src="assets/images/yogax_logo.png" alt="YogaXBiofeedback" class="exp-logo">
+                    <div class="exp-title"><h3>YogaXBiofeedback Pvt. Ltd.</h3><span>Founder & CEO • 2024-Present</span></div>
+                </div>
+                <p>Building the world's first nostril-specific airflow biofeedback device (PranaFlow) and Ekagrata mindfulness platform. Bridging 5000-year-old Svara Yoga with modern sensor technology.</p>
+                <a href="https://d22116-cmd.github.io/parul-mindfulness/" class="exp-link" target="_blank">View Ekagrata Demo →</a>
+            </div>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div class="exp-logo" style="background: var(--deep-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;">IMICS</div>
+                    <div class="exp-title"><h3>IMICS - Consciousness Research</h3><span>Project Scientist • Jan 2023-Present</span></div>
+                </div>
+                <p>Leading global field studies on children reporting past-life memories. Implementing multi-modal data collection: EEG, HRV analysis, cognitive assessments, and genetic sample collection.</p>
+                <a href="https://www.imics.org/" class="exp-link" target="_blank">Visit IMICS →</a>
+            </div>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div class="exp-logo" style="background: #FF7F50; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; text-align: center; line-height: 1.1;">Siddhi<br>Yoga</div>
+                    <div class="exp-title"><h3>Siddhi Yoga International</h3><span>Course Director • Apr 2022-Present</span></div>
+                </div>
+                <p>Designed Yoga Alliance USA certified courses (50hr Pranayama TTC, 50hr Mantra Yoga TTC). Course manuals exceed 100,000+ words. Thousands of students globally from USA, Europe.</p>
+                <a href="https://www.siddhiyoga.com/courses-online/breathwork-and-pranayama-teacher-training-certification" class="exp-link" target="_blank">View Courses →</a>
+            </div>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div class="exp-logo" style="background: var(--saffron); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">IIT</div>
+                    <div class="exp-title"><h3>IIT Mandi - IKSMHA Centre</h3><span>PhD Scholar & SRF • 2022-Present</span></div>
+                </div>
+                <p>Senior Research Fellow researching Svara Yoga Biofeedback & Contemplative Neuroscience. Teaching IC 181: Introduction to Consciousness and Holistic Wellbeing. Best TA Award 2023.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="credentials" id="credentials">
+        <div class="section-header">
+            <div class="section-label">Academic Journey</div>
+            <h2 class="section-title">Education & Awards</h2>
+        </div>
+        <div class="credentials-grid">
+            <div class="credential-card">
+                <h3>🎓 PhD - IIT Mandi</h3>
+                <div class="institution">IKSMHA Centre • 2022-Present</div>
+                <p>Svara Yoga Biofeedback & Contemplative Neuroscience. NASAFLOW technology development.</p>
+                <div class="gold-medal">🏆 PM Award Nominee 2024</div>
+            </div>
+            <div class="credential-card">
+                <h3>🎓 M.Sc. Yoga Therapy</h3>
+                <div class="institution">MDNIY, Delhi • 2019-2021</div>
+                <p>Advanced therapeutic yoga with thesis on Thyroid disorders.</p>
+                <div class="gold-medal">🥇 Gold Medalist</div>
+            </div>
+            <div class="credential-card">
+                <h3>🎓 B.Sc. Yoga Therapy</h3>
+                <div class="institution">MDNIY, Delhi • 2016-2019</div>
+                <p>Foundation in yoga philosophy, anatomy, and therapeutic applications.</p>
+                <div class="gold-medal">🥇 Gold Medalist</div>
+            </div>
+            <div class="credential-card">
+                <h3>🏆 PragnyaTech Winner</h3>
+                <div class="institution">Adani Global Indology 2025</div>
+                <p>₹1 Lakh prize for Svara Yoga Detection Device. Presented by Dr. Priti Adani.</p>
+            </div>
+            <div class="credential-card">
+                <h3>🏆 3rd Best Paper</h3>
+                <div class="institution">MBCC 2023, IIT Mandi</div>
+                <p>Mind, Brain & Consciousness Conference for nasal dominance research.</p>
+            </div>
+            <div class="credential-card">
+                <h3>📜 Certifications</h3>
+                <div class="institution">YCB • UGC • Harvard</div>
+                <p>Yoga Therapist & Evaluator (YCB). UGC JRF/SRF Fellow. Harvard Medical CME.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <div class="section-label">Highlights</div>
+            <h2 class="section-title">Photo Gallery</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item large">
+                <img src="assets/images/adani_award_priti.jpg" alt="With Dr. Priti Adani">
+                <div class="overlay">Receiving PragnyaTech Award from Dr. Priti Adani, Adani Foundation</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/with_baba_ramdev.jpg" alt="With Baba Ramdev">
+                <div class="overlay">Hosting Baba Ramdev at YCB Foundation Meeting</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/with_ishwar_basavareddi.jpg" alt="With Dr. Ishwar Basavareddi">
+                <div class="overlay">With Dr. Ishwar Basavareddi, Ex-Director MDNIY</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/pranaflow_demo.jpg" alt="PranaFlow Demo">
+                <div class="overlay">PranaFlow demo at National Engineering Day, IIT Mandi</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/with_abhijit_chavda.jpg" alt="With Abhijit Chavda">
+                <div class="overlay">Hosting Abhijit Chavda's talk at IIT Mandi</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/yoga_day_iit_mandi.jpg" alt="Yoga Day IIT Mandi">
+                <div class="overlay">MC - International Yoga Day 2023, IIT Mandi</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/teaching_iit_mandi.jpg" alt="Teaching at IIT Mandi">
+                <div class="overlay">IC 181 students, IIT Mandi</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/delhi_yoga_shala.jpg" alt="Delhi ki Yoga Shala">
+                <div class="overlay">Delhi ki Yoga Shala 2022 launch</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/cec_ugc_talk.jpg" alt="CEC UGC">
+                <div class="overlay">Recording at CEC-UGC</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/cert_gold_medal.jpg" alt="Gold Medal">
+                <div class="overlay">Gold Medal Certificate - GGSIPU 2019</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="media" id="media">
+        <div class="section-header">
+            <div class="section-label">Public Outreach</div>
+            <h2 class="section-title">Television & Radio (30+ Episodes)</h2>
+        </div>
+        <div class="media-grid">
+            <div class="media-card">
+                <div class="media-thumbnail"><span class="media-badge">DD Vyas / CEC-UGC</span><div class="play-icon">▶</div></div>
+                <div class="media-info">
+                    <h4>Fundamentals of Yoga (6 Parts)</h4>
+                    <p>योग के मूलभूत सिद्धांत</p>
+                    <a href="https://youtu.be/HAVAN4GB8LI" class="media-link" target="_blank">Watch →</a>
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-thumbnail"><span class="media-badge">DD Vyas / CEC-UGC</span><div class="play-icon">▶</div></div>
+                <div class="media-info">
+                    <h4>Yogic Sukshma Vyayama (14 Parts)</h4>
+                    <p>यौगिक सूक्ष्म व्यायाम</p>
+                    <a href="https://youtu.be/e8SZCIZfyOs" class="media-link" target="_blank">Watch →</a>
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-thumbnail"><span class="media-badge">DD Vyas / CEC-UGC</span><div class="play-icon">▶</div></div>
+                <div class="media-info">
+                    <h4>Yoga & Mental Health (2 Parts)</h4>
+                    <p>Impact on psychological wellbeing</p>
+                    <a href="https://youtu.be/e-iKRqmubS0" class="media-link" target="_blank">Watch →</a>
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-thumbnail"><span class="media-badge">DD Vyas / CEC-UGC</span><div class="play-icon">▶</div></div>
+                <div class="media-info">
+                    <h4>Yoga in Vedas & Ayurveda</h4>
+                    <p>योग परंपरा का संक्षिप्त सर्वेक्षण</p>
+                    <a href="https://youtu.be/lrmLMtHBHIg" class="media-link" target="_blank">Watch →</a>
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-thumbnail"><span class="media-badge">All India Radio</span><div class="play-icon">🎙️</div></div>
+                <div class="media-info">
+                    <h4>Science of Yoga Asanas</h4>
+                    <p>Akashvani Delhi broadcast</p>
+                    <a href="https://iksmha.iitmandi.ac.in/SCIENCE%20TALK-%20SCIENCE%20OF%20YOGASANAS.mp3" class="media-link" target="_blank">Listen →</a>
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-thumbnail"><span class="media-badge">DD Vyas / CEC-UGC</span><div class="play-icon">▶</div></div>
+                <div class="media-info">
+                    <h4>Yogic Sthula Vyayama (2 Parts)</h4>
+                    <p>यौगिक स्थूल व्यायाम</p>
+                    <a href="https://youtu.be/Merwazw_3NE" class="media-link" target="_blank">Watch →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="technology" id="technology">
+        <div class="section-header">
+            <div class="section-label">Innovation</div>
+            <h2 class="section-title">YogaXBiofeedback Technology</h2>
+        </div>
+        <div class="tech-showcase">
+            <div class="tech-content">
+                <h3>Ancient Practices, Modern Measurement</h3>
+                <p>Founded YogaXBiofeedback Pvt. Ltd. to bring objective measurement to traditional yoga practices, validating 5000-year-old wisdom with cutting-edge technology.</p>
+                <ul class="tech-features">
+                    <li>PranaFlow: World's first nostril-specific airflow sensor</li>
+                    <li>NASAFLOW technology with patent pending</li>
+                    <li>94.2% accuracy vs gold-standard spirometry</li>
+                    <li>Ekagrata: Camera-based mindfulness biofeedback</li>
+                    <li>Real-time HRV and stress detection via smartphone</li>
+                    <li>Research-grade data collection protocols</li>
+                </ul>
+            </div>
+            <div class="tech-visual">
+                <img src="assets/images/yogax_logo.png" alt="YogaXBiofeedback Logo" class="tech-logo">
+                <p style="margin-bottom: 1.5rem; opacity: 0.9;">Experience the Ekagrata mindfulness platform.</p>
+                <a href="https://d22116-cmd.github.io/parul-mindfulness/" class="demo-btn" target="_blank">Launch Demo →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <div class="section-label">Get in Touch</div>
+            <h2 class="section-title">Connect With Me</h2>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-text"><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:tiwarisatyam038@gmail.com">tiwarisatyam038@gmail.com</a></div></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div class="contact-text"><div class="contact-label">Phone</div><div class="contact-value">+91 9953094583</div></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text"><div class="contact-label">Address</div><div class="contact-value">IKSMHA Centre, IIT Mandi, HP</div></div>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/satyam-tiwari-102491147" class="social-link" target="_blank">💼</a>
+            <a href="https://youtu.be/HAVAN4GB8LI" class="social-link" target="_blank">📺</a>
+            <a href="https://www.siddhiyoga.com/courses-online/breathwork-and-pranayama-teacher-training-certification" class="social-link" target="_blank">🎓</a>
+            <a href="https://www.imics.org/" class="social-link" target="_blank">🔬</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Satyam Tiwari | PhD Scholar, IIT Mandi | Founder, YogaXBiofeedback Pvt. Ltd.</p>
+        <p style="margin-top: 0.5rem;">🏆 PragnyaTech Winner | 🥇 Double Gold Medalist | Bridging Ancient Wisdom & Modern Science</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }));
+        const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } }), { threshold: 0.1 });
+        document.querySelectorAll('.credential-card, .exp-card, .media-card, .gallery-item').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = 'opacity 0.6s, transform 0.6s'; observer.observe(el); });
+    </script>
+</body>
+</html>
